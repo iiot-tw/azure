@@ -54,7 +54,7 @@ You should have the following items ready before beginning the process:
 
         sudo apt-get update
 
-        sudo apt-get install -y curl uuid-dev libcurl4-openssl-dev build-essential cmake git
+        sudo apt-get install -y curl uuid-dev libcurl4-openssl-dev build-essential cmake git libssl1.0-dev
     
 -   Download the SDK to the board by issuing the following command in PuTTY:
 
