@@ -56,11 +56,12 @@ You should have the following items ready before beginning the process:
 
 -   Download the Microsoft Azure IoT Device SDK to the board by issuing the following command on the board::
 
-        git clone --recursive https://github.com/Azure/azure-iot-sdk-python.git
+        git clone -b v1-deprecated --single-branch --recursive https://github.com/Azure/azure-iot-sdk-python.git
 
 -   Run following commands to build the SDK:
 
         cd python/build_all/linux
+		sudo ./setup.sh
 	    sudo ./build.sh    
 
 -   After a successful build, the `iothub_client.so` Python extension module is copied to the **python/device/samples** folder.
@@ -71,17 +72,12 @@ You should have the following items ready before beginning the process:
 
 -   Edit the following file using any text editor of your choice:
 
-    **For AMQP protocol:**
+		nano iothub_client_sample.py
 
-        nano iothub_client_sample_amqp.py
+-	Find the following code and choose a protocol you want to use:
 
-    **For HTTP protocol:**
-
-        nano iothub_client_sample_http.py
-
-    **For MQTT protocol:**
-
-        nano iothub_client_sample_mqtt.py
+		# chose HTTP, AMQP, AMQP_WS or MQTT as transport protocol
+		PROTOCOL = IoTHubTransportProvider.MQTT
 
 -   Find the following place holder for device connection string:
 
@@ -92,21 +88,16 @@ You should have the following items ready before beginning the process:
 ## 3.2 Send Device Events to IoT Hub:
 
 -   Run the sample application using the following command:
-    **For AMQP protocol:**
 
-        python iothub_client_sample_amqp.py
-
-    **For HTTP protocol:**
-
-        python iothub_client_sample_http.py
-
-    **For MQTT protocol:**
-
-        python iothub_client_sample_mqtt.py
+        python iothub_client_sample.py
 
 -   See [Manage IoT Hub][lnk-manage-iot-hub] to learn how to observe the messages IoT Hub receives from the application.
 
 ## 3.3 Receive messages from IoT Hub
+
+-   Run the sample application using the following command:
+
+        python iothub_client_sample.py
 
 -   See [Manage IoT Hub][lnk-manage-iot-hub] to learn how to send cloud-to-device messages to the application.
 
